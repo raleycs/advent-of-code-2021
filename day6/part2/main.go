@@ -44,11 +44,11 @@ func main() {
         hash[fish] += 1
     }
 
-    fmt.Printf("Initial state: ")
-    for k, v := range(hash) {
-        fmt.Printf("Fish with timer %d: %d,", k, v)
-    }
-    fmt.Println()
+    // fmt.Printf("Initial state: ")
+    // for k, v := range(hash) {
+    //     fmt.Printf("Fish with timer %d: %d,", k, v)
+    // }
+    // fmt.Println()
 
     total := len(fishes)
 
@@ -57,12 +57,12 @@ func main() {
     // the speed of the solution is by using
     // hashing tables due to O(1) lookup time
     for day := 0; day < 256; day++ {
-        fmt.Printf("Day %d\n", day)
-        for k, v := range(hash) {
-            fmt.Printf("Fish with timer %d: %d\n", k, v)
-        }
-        fmt.Println(total)
-        fmt.Println()
+        // fmt.Printf("Day %d\n", day)
+        // for k, v := range(hash) {
+        //     fmt.Printf("Fish with timer %d: %d\n", k, v)
+        // }
+        // fmt.Println(total)
+        // fmt.Println()
         if hash[0] > 0 {
             tmp := hash[8]
             hash[8] = hash[0]
