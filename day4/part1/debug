@@ -1,0 +1,33 @@
+Reading in input.txt...
+Number drawn: 7
+Number drawn: 4
+Number drawn: 9
+Number drawn: 5
+Number drawn: 11
+Number drawn: 17
+Number drawn: 23
+Number drawn: 2
+Calculating final score: 247 * 2
+Board 1
+22 	13 	-1 	-1 	0 	
+8 	-1 	-1 	-1 	24 	
+21 	-1 	14 	16 	-1 	
+6 	10 	3 	18 	-1 	
+1 	12 	20 	15 	19 	
+----------
+Board 2
+3 	15 	0 	-1 	22 	
+-1 	18 	13 	-1 	-1 	
+19 	8 	-1 	25 	-1 	
+20 	-1 	10 	24 	-1 	
+14 	21 	16 	12 	6 	
+----------
+Board 3
+14 	21 	-1 	24 	-1 	
+10 	16 	15 	-1 	19 	
+18 	8 	-1 	26 	20 	
+22 	-1 	13 	6 	-1 	
+-1 	0 	12 	3 	-1 	
+----------
+Winner: Board 3
+Score: 494
