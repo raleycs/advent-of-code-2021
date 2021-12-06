@@ -14,7 +14,6 @@ func main() {
 
     // Open "input.txt"
     buffer, err := os.Open("input.txt")
-    // buffer, err := os.Open("test.txt")
     if err != nil {
         log.Fatal(err)
     }
@@ -74,51 +73,41 @@ func main() {
             }
             // diagonals
         } else {
-            // fmt.Printf("DEBUG: %d,%d\t", x0, y0)
-            // fmt.Printf("DEBUG: %d,%d\n", x1, y1)
             // top right to bottom left
             if x1 >= x0  && y0 >= y1 {
-                fmt.Println("here 1")
                 for i := x0; i <= x1; i++ {
                     diff := y0 - (i - x0)
                     if diff < 0 {
                         diff = -diff
                     }
-                    // fmt.Printf("DEBUG: %d,%d\n", i, diff)
                     danger[strconv.Itoa(i) + "," + strconv.Itoa(diff)] += 1
                 }
             } else if x1 >= x0 && y1 >= y0 {
                 // bottom left to top right
-                fmt.Println("here 2")
                 for i := x0; i <= x1; i++ {
                     diff := y0 + (i - x0)
                     if diff < 0 {
                         diff = -diff
                     }
-                    // fmt.Printf("DEBUG: %d,%d\n", i, diff)
                     danger[strconv.Itoa(i) + "," + strconv.Itoa(diff)] += 1
                 }
 
             } else if x1 < x0 && y1 < y0 {
                 // top left to bottom right
-                fmt.Println("here 3")
                 for i := x0; i >= x1; i-- {
                     diff := y0 - (x0 - i)
                     if diff < 0 {
                         diff = -diff
                     }
-                    // fmt.Printf("DEBUG: %d,%d\n", i, diff)
                     danger[strconv.Itoa(i) + "," + strconv.Itoa(diff)] += 1
                 }
             } else if x1 < x0 && y1 >= y0 {
                 // bottom right to top left
-                fmt.Println("here 4")
                 for i := x0; i >= x1; i-- {
                     diff := y0 + (x0 - i)
                     if diff < 0 {
                         diff = -diff
                     }
-                    // fmt.Printf("DEBUG: %d,%d\n", i, diff)
                     danger[strconv.Itoa(i) + "," + strconv.Itoa(diff)] += 1
                 }
             }
@@ -135,17 +124,6 @@ func main() {
             overlaps += 1
         }
     }
-
-    // for x := 0; x < 1000; x++ {
-    //     for y := 0; y < 1000; y++ {
-    //         if danger[fmt.Sprintf("%d,%d", y, x)] == 0 {
-    //             fmt.Printf(".")
-    //         } else {
-    //             fmt.Printf("%d", danger[fmt.Sprintf("%d,%d", y, x)])
-    //         }
-    //     }
-    //     fmt.Println()
-    // }
 
     fmt.Printf("Total overlaps: %d\n", overlaps)
 }
