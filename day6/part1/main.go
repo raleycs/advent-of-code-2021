@@ -39,12 +39,6 @@ func main() {
         log.Fatal(err)
     }
 
-    fmt.Printf("Initial state: ")
-    for _, fish := range(fishes) {
-        fmt.Printf("%d,", fish)
-    }
-    fmt.Println()
-
     // decrement fish based on days
     for day := 0; day < 80; day++ {
         limit := len(fishes)
@@ -56,11 +50,6 @@ func main() {
                 fishes[i] -= 1
             }
         }
-        fmt.Printf("After\t %d day(s): ", day)
-        for i := 0; i < len(fishes); i++ {
-            fmt.Printf("%d,", fishes[i])
-        }
-        fmt.Println()
     }
 
     fmt.Printf("Total fish: %d\n", len(fishes))
