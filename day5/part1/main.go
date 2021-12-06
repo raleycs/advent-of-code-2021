@@ -81,7 +81,6 @@ func main() {
     for _, v := range(danger) {
         if v >= 2 {
             overlaps += 1
-            // fmt.Printf("%s : %d\n", k, v)
         }
     }
 
