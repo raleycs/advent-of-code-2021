@@ -21,7 +21,7 @@ func main() {
     defer buffer.Close()
 
     var crabs []int // crab submarine
-    hash := make(map[int]int)
+    hash := make(map[int]int) // map to determine lowest total costs for each row
 
     // Create Scanner to read in file line by line
     scanner := bufio.NewScanner(buffer)
@@ -39,17 +39,14 @@ func main() {
         log.Fatal(err)
     }
 
+    // iterate through each row that has a crab
+    // and find the cheapest row to align to
     for _, current := range(crabs) {
-        // fmt.Printf("Changing to %d\n", current)
         if hash[current] != 0 {
             continue
         }
         for i := 0; i < len(crabs); i++ {
             cost := crabs[i] - current
-            // if current == 2 {
-            //     fmt.Printf("From %d to %d: ", current, crabs[i])
-            //     fmt.Println(cost)
-            // }
             if cost < 0 {
                 cost = -cost
             }
@@ -57,15 +54,12 @@ func main() {
         }
     }
 
+    // search through map to find cheapest row
     min := math.MaxInt
-    row := -1
-    for key, value := range(hash) {
+    for _, value := range(hash) {
         if min > value {
             min = value
-            row = key
         }
     }
-    // fmt.Println(hash)
-    fmt.Println(row)
     fmt.Println(min)
 }
