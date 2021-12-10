@@ -33,6 +33,7 @@ func main() {
             log.Fatal(err)
         }
 
+        // change values based on input commands
         if t == "forward" {
             horizontal += val
             depth += aim * val
