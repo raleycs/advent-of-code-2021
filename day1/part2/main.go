@@ -31,7 +31,7 @@ func getMeasures() []int {
 
     // Create Scanner to read in file line by line
     scanner := bufio.NewScanner(buffer)
-    measures := []int{}
+    measures := []int{} // slice holding all measurements from input
     for scanner.Scan() {
         v, err := strconv.Atoi(scanner.Text())
         if err != nil {
@@ -53,18 +53,19 @@ func main() {
     currentWindow := []int{} // temporary var holding current window
     previousWindow := measures[0:3] // temporary var holding previous window
     increases := 0 // var to hold number of increases
-    measures = measures[1:]
+    measures = measures[1:] // ignore first input
 
     for _, v := range(measures) {
         fmt.Printf("Reading in: %d\n", v)
 
-        currentWindow = append(currentWindow, v)
+        currentWindow = append(currentWindow, v) // add current input to sliding window
 
         fmt.Println(previousWindow)
         fmt.Println(currentWindow)
 
         // sum when new window is full
         if len(currentWindow) == 3 {
+            // determine if there was an increase from the previous window
             if windowSum(currentWindow) > windowSum(previousWindow) {
                 increases += 1 // increment
                 fmt.Printf("Current sum: %d (increased)\n", windowSum(currentWindow))
