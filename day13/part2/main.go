@@ -55,7 +55,6 @@ func main() {
 
     for _, inst := range(instructions) {
 
-        visible := 0 // int holding number of visible points after each fold
         direction := strings.Split(inst, "=")[0] // string determining horizontal/vertical fold
         point := strings.Split(inst, "=")[1] // string holding the point where we make the fold
         p, err := strconv.Atoi(point) // int value holding point where we make the fold
