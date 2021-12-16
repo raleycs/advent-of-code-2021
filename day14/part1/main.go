@@ -5,6 +5,7 @@ import(
     "fmt"
     "log"
     "os"
+    "sort"
     "strings"
 )
 
@@ -39,16 +40,6 @@ func main() {
 
     polymer := []rune(input)
 
-
-    // for i := 0; i < len(polymer) - 1; i++ {
-    //     pair := string(polymer[i]) + string(polymer[i + 1])
-    //     pairs[pair] = i + 1
-    // }
-    for _, s := range(polymer) {
-        fmt.Printf("%s", string(s))
-    }
-    fmt.Println()
-
     steps := 10
     for i := 0; i < steps; i++ {
         pairs := make(map[string][]int)
@@ -56,15 +47,12 @@ func main() {
             pair := string(polymer[x]) + string(polymer[x + 1])
             pairs[pair] = append(pairs[pair], x + 1)
         }
-        // fmt.Println(pairs)
         for key, indexes := range(pairs) {
             if hash[key] != "" {
                 for _, index := range(indexes) {
                     val := []rune(hash[key])
                     polymer = append(polymer[:index + 1], polymer[index:]...)
                     polymer[index] = val[0]
-
-                    fmt.Printf("Pattern %s: Added %s @ %d\n", key, string(val[0]), index)
 
                     for k, in := range(pairs) {
                         for slot, v := range(in){
@@ -77,21 +65,20 @@ func main() {
 
             }
         }
-        for _, s := range(polymer) {
-            fmt.Printf("%s", string(s))
-        }
-        fmt.Println()
     }
 
     count := make(map[string]int)
+
     for _, s := range(polymer) {
-        str := string(s)
-
-        count[str] += 1
+        count[string(s)] += 1
     }
 
-    for k, v := range(count) {
-        fmt.Printf("%s: %d\n", k, v)
+    ordered := []int{}
+    for _, val := range(count) {
+        ordered = append(ordered, val)
     }
 
+    sort.Ints(ordered)
+
+    fmt.Printf("%d\n", ordered[len(ordered) - 1] - ordered[0])
 }
